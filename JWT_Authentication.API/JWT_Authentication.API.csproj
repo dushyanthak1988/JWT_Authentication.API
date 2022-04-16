@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JWT_Authentication.Authentication\JWT_Authentication.Auth.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Concert\JWT_Authentication.Concert.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Entities\JWT_Authentication.Entities.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Helper\JWT_Authentication.Helper.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Model\JWT_Authentication.Models.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Repository\JWT_Authentication.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

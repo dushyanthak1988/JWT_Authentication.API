@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JWT_Authentication.Entities\JWT_Authentication.Entities.csproj" />
+    <ProjectReference Include="..\JWT_Authentication.Model\JWT_Authentication.Models.csproj" />
+  </ItemGroup>
+
+</Project>
