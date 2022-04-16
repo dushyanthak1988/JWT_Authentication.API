@@ -60,6 +60,10 @@ namespace JWT_Authentication.API
                .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader());
+
+            // global error handler
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
             // custom jwt auth middleware
             app.UseMiddleware<JwtMiddleware>();
 
