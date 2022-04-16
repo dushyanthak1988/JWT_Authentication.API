@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace JWT_Authentication.Entities
 {
@@ -10,6 +11,9 @@ namespace JWT_Authentication.Entities
         public string Username { get; set; }
 
         [JsonIgnore]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
+
+        [JsonIgnore]
+        public List<RefreshToken> RefreshTokens { get; set; }
     }
 }

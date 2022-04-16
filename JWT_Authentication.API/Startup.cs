@@ -2,6 +2,7 @@
 using JWT_Authentication.Auth;
 using JWT_Authentication.Concert;
 using JWT_Authentication.Helper;
+using JWT_Authentication.Models;
 using JWT_Authentication.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,10 +26,16 @@ namespace JWT_Authentication.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
+
+            // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddDbContext<DataContext>();
             services.AddScoped<AuthenticationHelper>();
+            // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtUtils, JwtUtils>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JWT_Authentication.API", Version = "v1" });
