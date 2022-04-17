@@ -1,6 +1,5 @@
 ﻿using JWT_Authentication.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace JWT_Authentication.Models
 {
@@ -8,20 +7,9 @@ namespace JWT_Authentication.Models
     {
         public DbSet<User> Users { get; set; }
 
-        private readonly IConfiguration Configuration;
 
-        public DataContext(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public DataContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
 
-            if (!options.IsConfigured)
-            {
-                options.UseSqlServer("Name=TestDb");
-            }
-        }
     }
 }
