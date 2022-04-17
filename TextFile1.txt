@@ -1,0 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+namespace EFCoreCodeFirstSample.Models
+{
+    public class EmployeeContext : DbContext
+    {
+        public EmployeeContext(DbContextOptions options)
+            : base(options)
+        {
+        }
+        public DbSet<Employee> Employees { get; set; }
+    }
+}
+
+
+add Following Code for appsettings.json
+
+ "ConnectionString": {
+    "EmployeeDB": "server=MY_SERVER;database=EmployeeDB;User ID=MY_USER;password=MY_PASSWORD;"
+  },
+
+
+  Then let’s install the Microsoft.EntityFrameworkCore.SqlServer package and register our context in the Startup.cs:
+
+   services.AddDbContext<EmployeeContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:EmployeeDB"]));
+
+
+ Let’s install the Microsoft.EntityFrameworkCore.Tools package and run the following command in the Package Manager console:
+
+PM> Add-Migration EFCoreCodeFirstSample.Models.EmployeeContext
+
+ PM> update-database
